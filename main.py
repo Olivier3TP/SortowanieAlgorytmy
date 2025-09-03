@@ -8,6 +8,7 @@ def show(numbers: list) -> None:
         print(number, end=' ')
     print()
 
+#sortownie bombelkowe
 def bubble_sort(numbers: list) -> list:
     n = len(numbers)
     for j in range(0, n - 1):
@@ -16,6 +17,7 @@ def bubble_sort(numbers: list) -> list:
                 numbers[i], numbers[i+1] = numbers[i+1], numbers[i]
     return numbers
 
+# sortowanie przez wybór
 def selection_sort(numbers: list) -> list:
     n = len(numbers)
     for j in range(0, n-1):
@@ -28,11 +30,27 @@ def selection_sort(numbers: list) -> list:
             numbers[p_min], numbers[j] = numbers[j], numbers[p_min]
     return numbers
 
+#sortowanie przez wstawianie
+def insertion_sort(numbers: list) -> list:
+    n = len(numbers)
+    for j in range(n - 2, -1, -1):
+        x = numbers[j]
+        i = j + 1
+        while i < n and x > numbers[i]:
+            numbers[i-1] = numbers[i]
+            i = i + 1
+        numbers[i-1] = x
+    return numbers
+
+
+
 if __name__ == "__main__":
     numbers = rand_number(30)
     show(numbers)
     print("sortownie bombelkowe")
-    print(bubble_sort(numbers))
+    show(bubble_sort(numbers))
     print("sortownie przez wybór")
-    print(selection_sort(numbers))
+    show(selection_sort(numbers))
+    print("sortownie przez wstawianie")
+    show(insertion_sort(numbers))
 
